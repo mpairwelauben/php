@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ajax/php||files</title>
+</head>
+
+<body>
+    <form method="POST" id="postform" action="process.php">
+        <input type="text" placeholder="input text" name="name" id="name1" />
+        <input type="number" placeholder="input number" name="number" id="name2" />
+        <input type="email" placeholder="input email" name="email" id="name3" />
+        <input type="password" placeholder="input password" name="password" id="name4" />
+        <input value="submit" type="submit" />
+
+    </form>
+
+    <script>
+        document.getElementById('postform').addEventListener('submit', postName)
+        function postName(e) {
+            e.preventDefault()
+            //var name = document.getElementById('', 'name2', 'name3', 'name3',).value
+            var name = document.querySelectorAll("#name1, #name2, #name3,#name4").value;
+            var params = "name=name1&&" + name
+            var xhr = new XMLHttpRequest()
+            xhr.open('POST', 'process.php', true)
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+            xhr.onload = function () {
+                console.log(this.responseText)
+
+            }
+            xhr.send(params)
+        }
+
+
+    </script>
+
+</body>
+
+</html>
